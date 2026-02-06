@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --color-premium-light: #f8fafc;
+  --color-premium-dark: #0f172a;
+  --color-premium-accent: #3b82f6;
+  --color-premium-secondary: #64748b;
+
+  --animate-fade-in: fadeIn 0.5s ease-out;
+  --animate-slide-up: slideUp 0.5s ease-out;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+  @apply bg-premium-light text-premium-dark m-0 min-h-screen overflow-x-hidden;
+}
+
+.premium-gradient {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.premium-card {
+  @apply bg-white rounded-2xl shadow-xl border border-gray-100 p-8 transition-all duration-300;
+}
+
+.premium-button {
+  @apply px-8 py-4 bg-premium-accent text-white font-semibold rounded-xl transition-all duration-300 transform active:scale-95 hover:shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+}
+
+.option-button {
+  @apply w-full text-left p-5 rounded-xl border-2 border-slate-100 hover:border-premium-accent hover:bg-blue-50 transition-all duration-200 relative overflow-hidden;
+}
+
+/* Custom Micro-animations */
+@keyframes pulse-soft {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s infinite ease-in-out;
+}
