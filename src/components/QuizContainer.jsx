@@ -8,6 +8,8 @@ import ResultView from './ResultView';
 
 import IntermediateLoadingView from './IntermediateLoadingView';
 
+const DISABLE_PAYWALL = true; // Set to false to enable the paywall back
+
 const QuizContainer = () => {
     const [currentStep, setCurrentStep] = useState('landing'); // 'landing', 'quiz', 'intermediate-loading', 'calculating', 'tease', 'payment', 'results'
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -40,7 +42,11 @@ const QuizContainer = () => {
     };
 
     const handleCalculationComplete = () => {
-        setCurrentStep('tease');
+        if (DISABLE_PAYWALL) {
+            setCurrentStep('results');
+        } else {
+            setCurrentStep('tease');
+        }
     };
 
     const handleUnlock = () => {
